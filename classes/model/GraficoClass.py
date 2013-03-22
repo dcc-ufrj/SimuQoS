@@ -6,9 +6,11 @@ Created on 02/11/2012
 @author: diogo
 '''
 from MatematicaClass import MatematicaClass
+'''
 from series import Series
 import cairo
 import cairoplot
+'''
 import os
 import glob
 import matplotlib.pyplot as plt
@@ -36,12 +38,12 @@ class GraficoClass(object):
         for caminho in self.caminhos:
             self.arquivos += glob.glob(os.path.join(caminho,"*.txt"));
     
-    def tempoDownload(self,nome='tempoxNdownload.svg'):
+   # def tempoDownload(self,nome='tempoxNdownload.svg'):
         '''
         Organiza dados de tempo x numero de dwonloads efetivados
         x=[tempo1,tempo2, ...]
         y=[nDownload, nDownload, ...]
-        '''
+        
         total = {};
         for arquivo in self.arquivos:
             self.aberto = open(arquivo,"r");
@@ -76,7 +78,7 @@ class GraficoClass(object):
         
         cairoplot.dot_line_plot(os.path.join(self.caminho,nome),data,self.largura,self.altura,x_labels = tempo,
                                  axis = True, grid = True, x_title = "Tempo", y_title = "Nº de Downloads", series_legend=True);
-
+        '''
     def tempoDownloadAcumulado(self,nome='tempoxNdownloadacum.svg'):
         '''
         Organiza dados de arquivo x numero de dwonloads efetivados
@@ -131,9 +133,9 @@ class GraficoClass(object):
                 dictItems[item.tipoDownload+item.tipoConsumo].sort(key = lambda x: int(x.download))
         for elementos in dictItems.values():
             for elemento in elementos:
-                nomesProntos.append(str(elemento.tipoDownload) + "Download "+ ", "+ str(elemento.tipoConsumo)+" Consumption")
-                nomesProntos = set(nomesProntos)
-                nomesProntos = list(nomesProntos)
+                strNome = str(elemento.tipoDownload) + " Download"+ ", "+ str(elemento.tipoConsumo)+" Consumption"
+                if strNome not in nomesProntos:
+                    nomesProntos.append(strNome)
                 media, (erc,erb) = elemento.elemento[-1]['confianca'][0]
                 media, erc, erb
                 mediasProntas.append(float("{0:.2f}".format(media)))
@@ -157,7 +159,6 @@ class GraficoClass(object):
             t.set_fontsize('small')
         plt.savefig(os.path.join(self.caminho,nome), bbox_extra_artists=(leg,), bbox_inches='tight')
         ax.set_yscale('log')
-        ax.set_ylabel('Quantidade de Downloads Finalizados (log)')
         plt.savefig(os.path.join(self.caminho,'log'+nome), bbox_extra_artists=(leg,), bbox_inches='tight')
         #fim da montagem
         
@@ -166,12 +167,12 @@ class GraficoClass(object):
         
         
                                          
-    def tempoConsumo(self,nome='tempoxNconsumo.svg'):
+   # def tempoConsumo(self,nome='tempoxNconsumo.svg'):
         '''
         Organiza dados de tempo x numero de consumos efetivados
         x=[tempo1,tempo2, ...]
         y=[nConsumo, nConsumo, ...]
-        '''
+        
         total = {};
         for arquivo in self.arquivos:
             self.aberto = open(arquivo,"r");
@@ -206,7 +207,7 @@ class GraficoClass(object):
         
         cairoplot.dot_line_plot(os.path.join(self.caminho,nome),data,self.largura,self.altura,x_labels = tempo,
                                  axis = True, grid = True, x_title = "Tempo", y_title = "Nº de Consumo", series_legend=True);
-            
+        '''    
     def tempoConsumoAcumulado(self,nome='tempoxNconsumoacum.svg'):
         '''
         Organiza dados de arquivo x numero de consumos efetivados
@@ -260,9 +261,9 @@ class GraficoClass(object):
                 dictItems[item.tipoDownload+item.tipoConsumo].sort(key = lambda x: int(x.download))
         for elementos in dictItems.values():
             for elemento in elementos:
-                nomesProntos.append(str(elemento.tipoDownload) + "Download "+ ", "+ str(elemento.tipoConsumo)+" Consumption")
-                nomesProntos = set(nomesProntos)
-                nomesProntos = list(nomesProntos)
+                strNome = str(elemento.tipoDownload) + " Download"+ ", "+ str(elemento.tipoConsumo)+" Consumption"
+                if strNome not in nomesProntos:
+                    nomesProntos.append(strNome)
                 media, (erc,erb) = elemento.elemento[-1]['confianca'][0]
                 media, erc, erb
                 mediasProntas.append(float("{0:.2f}".format(media)))
@@ -272,8 +273,8 @@ class GraficoClass(object):
             rects.append(ax.errorbar(legendasX, mediasProntas, yerr=[erbProntos,ercProntos],color=cor.next(),fmt='--o'))
             mediasProntas, ercProntos, erbProntos = [0],[0],[0]       
         # algo mais
-        ax.set_ylabel('Quantidade de Consumo Finalizados')
-        ax.set_title('Consumo Acumulado')
+        ax.set_ylabel(u'Quantidade de Conteúdo Consumido')
+        ax.set_title('Consumo Acumulado ao Longo de 120 Timeslots')
         ax.set_xlabel('Taxa de Download')
         ax.grid(True)
         ax.set_xticks(legendasX)
@@ -285,7 +286,6 @@ class GraficoClass(object):
             t.set_fontsize('small')
         plt.savefig(os.path.join(self.caminho,nome), bbox_extra_artists=(leg,), bbox_inches='tight')
         ax.set_yscale('log')
-        ax.set_ylabel('Quantidade de Consumo Finalizados (log)')
         plt.savefig(os.path.join(self.caminho,'log'+nome), bbox_extra_artists=(leg,), bbox_inches='tight')
         
  
@@ -294,12 +294,12 @@ class GraficoClass(object):
         
 
 
-    def tempoPeersSemDownload(self,nome='tempoxNsemdownload.svg'):
+   # def tempoPeersSemDownload(self,nome='tempoxNsemdownload.svg'):
         '''
         Organiza dados de tempo x numero de peers sem fazer download naquele tempo
         x=[tempo1,tempo2, ...]
         y=[nPeers, nPeers, ...]
-        '''
+        
         total = {};
         for arquivo in self.arquivos:
             self.aberto = open(arquivo,"r");
@@ -327,7 +327,7 @@ class GraficoClass(object):
         
         cairoplot.dot_line_plot(os.path.join(self.caminho,nome),data,self.largura,self.altura,x_labels = tempo,
                                  axis = True, grid = True, x_title = "Tempo", y_title = "Nº de Peers com Download Parado", series_legend=True);
-            
+        '''  
     def tempoPeersSemDownloadAcumulado(self,nome='tempoxNsemdownloadacum.svg'):
         '''
         Organiza dados de arquivo x numero de peers sem fazer download acumulado
@@ -373,9 +373,9 @@ class GraficoClass(object):
                 dictItems[item.tipoDownload+item.tipoConsumo].sort(key = lambda x: int(x.download))
         for elementos in dictItems.values():
             for elemento in elementos:
-                nomesProntos.append(str(elemento.tipoDownload) + "Download "+ ", "+ str(elemento.tipoConsumo)+" Consumption")
-                nomesProntos = set(nomesProntos)
-                nomesProntos = list(nomesProntos)
+                strNome = str(elemento.tipoDownload) + " Download"+ ", "+ str(elemento.tipoConsumo)+" Consumption"
+                if strNome not in nomesProntos:
+                    nomesProntos.append(strNome)
                 media, (erc,erb) = elemento.elemento[-1]['confianca'][0]
                 media, erc, erb
                 mediasProntas.append(float("{0:.2f}".format(media)))
@@ -398,19 +398,18 @@ class GraficoClass(object):
             t.set_fontsize('small')
         plt.savefig(os.path.join(self.caminho,nome), bbox_extra_artists=(leg,), bbox_inches='tight')
         ax.set_yscale('log')
-        ax.set_ylabel('Tempo de Peers sem Download (log)')
         plt.savefig(os.path.join(self.caminho,'log'+nome), bbox_extra_artists=(leg,), bbox_inches='tight')
  
         #cairoplot.horizontal_bar_plot(os.path.join(self.caminho,'2'+nome),dados,self.largura,self.altura, y_labels = self.arquivos,
          #                       border = 20, display_values = True, rounded_corners = True, colors = [(0.5,0.2,0)]);
         
 
-    def tempoPeersSemConsumo(self,nome='tempoxNsemconsumo.svg'):
+   # def tempoPeersSemConsumo(self,nome='tempoxNsemconsumo.svg'):
         '''
         Organiza dados de tempo x numero de peers sem fazer consumo naquele tempo
         x=[tempo1,tempo2, ...]
         y=[nPeers, nPeers, ...]
-        '''
+        
         total = {};
         for arquivo in self.arquivos:
             self.aberto = open(arquivo,"r");
@@ -438,7 +437,7 @@ class GraficoClass(object):
         
         cairoplot.dot_line_plot(os.path.join(self.caminho,nome),data,self.largura,self.altura,x_labels = tempo,
                                  axis = True, grid = True, x_title = "Tempo", y_title = "Nº de Peers com Consumo Parado", series_legend=True);
-            
+        '''    
     def tempoPeersSemConsumoAcumulado(self,nome='tempoxNsemconsumoacum.svg'):
         '''
         Organiza dados de arquivo x numero de peers sem fazer download acumulado
@@ -485,8 +484,10 @@ class GraficoClass(object):
                 dictItems[item.tipoDownload+item.tipoConsumo].sort(key = lambda x: int(x.download))
         for elementos in dictItems.values():
             for elemento in elementos:
-                nomesProntos.append(str(elemento.tipoDownload) + "Download "+ ", "+ str(elemento.tipoConsumo)+" Consumption")
-                nomesProntos = set(nomesProntos)
+                strNome = str(elemento.tipoDownload) + " Download"+ ", "+ str(elemento.tipoConsumo)+" Consumption"
+                if strNome not in nomesProntos:
+                    nomesProntos.append(strNome)
+
                 nomesProntos = list(nomesProntos)
                 media, (erc,erb) = elemento.elemento[-1]['confianca'][0]
                 media, erc, erb
@@ -497,8 +498,8 @@ class GraficoClass(object):
             rects.append(ax.errorbar(legendasX, mediasProntas, yerr=[erbProntos,ercProntos],color=cor.next(),fmt='--o'))
             mediasProntas, ercProntos, erbProntos = [0],[0],[0]       
         # algo mais
-        ax.set_ylabel('Tempo de Peers sem Consumo')
-        ax.set_title('Tempo Acumulado sem Consumo')
+        ax.set_ylabel('Tempo Bloqueado (Tempo de Peers sem Consumo)')
+        ax.set_title('Tempo Acumulado sem Consumo ao Longo de 120 Timeslots')
         ax.set_xlabel('Taxa de Download')
         ax.grid(True)
         ax.set_xticks(legendasX)
@@ -510,7 +511,6 @@ class GraficoClass(object):
             t.set_fontsize('small')
         plt.savefig(os.path.join(self.caminho,nome), bbox_extra_artists=(leg,), bbox_inches='tight')
         ax.set_yscale('log')
-        ax.set_ylabel('Tempo de Peers sem Consumo (log)')
         plt.savefig(os.path.join(self.caminho,'log'+nome), bbox_extra_artists=(leg,), bbox_inches='tight')
         
         
@@ -518,12 +518,12 @@ class GraficoClass(object):
         #                        border = 20, display_values = True, rounded_corners = True, colors = [(0.5,0.2,0)]);
         
         
-    def parcelaDownloadAcumulado(self,nome='parcelaxDownloadacum.svg'):
+   # def parcelaDownloadAcumulado(self,nome='parcelaxDownloadacum.svg'):
         '''
         Organiza dados de situacao (pareamento com download ou nao) x numero vezes
         x=[situacao1,situacao2, ...]
         y=[nVezes, nVezes, ...]
-        '''
+        
         total = {};
         for arquivo in self.arquivos:
             self.aberto = open(arquivo,"r");
@@ -555,7 +555,7 @@ class GraficoClass(object):
                                 background = background, gradient = True, shadow = True, inner_radius = 0.3);
         except:
             pass
-
+        '''
 
 class ItemClass(object):
     '''

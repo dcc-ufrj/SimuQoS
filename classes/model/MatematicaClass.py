@@ -20,7 +20,7 @@ class MatematicaClass(object):
         arquivo => [primeiro,segundo,terceiro...], sendo esses numeros inteiros
         '''
         self.dictDados = dictDados;
-        numpy.seterr(all='ignore')
+        #numpy.seterr(all='ignore')
         self.quantidade = 0
     
     def juntaMesmoTipo(self):

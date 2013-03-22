@@ -25,11 +25,11 @@ class ResultadoController():
         grafico = GraficoClass.GraficoClass();
         
         #grafico.tempoDownload("Download_"+nome_padrao+'.svg');  
-        grafico.tempoDownloadAcumulado("DownloadAcumulado_"+nome_padrao+'.svg');
+        #grafico.tempoDownloadAcumulado("DownloadAcumulado_"+nome_padrao+'.svg');
         #grafico.tempoConsumo("Consumo_"+nome_padrao+'.svg');
         grafico.tempoConsumoAcumulado("ConsumoAcumulado_"+nome_padrao+'.svg');
         #grafico.tempoPeersSemDownload("SemDownload_"+nome_padrao+'.svg');
-        grafico.tempoPeersSemDownloadAcumulado("SemDownloadAcumulado_"+nome_padrao+'.svg');
+        #grafico.tempoPeersSemDownloadAcumulado("SemDownloadAcumulado_"+nome_padrao+'.svg');
         #grafico.tempoPeersSemConsumo("SemConsumo_"+nome_padrao+'.svg');
         grafico.tempoPeersSemConsumoAcumulado("SemConsumoAcumulado_"+nome_padrao+'.svg');
         #grafico.parcelaDownloadAcumulado("Parcela_"+nome_padrao+'.svg');              
