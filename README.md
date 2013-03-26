@@ -5,7 +5,7 @@ SimuQoS is a Python QoS simulator with a lot of parameters for trade and preview
 
 It's consists of two main controllers:
 
-	1. MainController thats run the simulations and store the results;
+	1. MainController thats run the simulations and store the results
 	2. ResultadoController thats get results of simulations, group and plot graphs
 
 If you run Main.py without parameters, the ResultadoController will be called, else MainController
