@@ -4,6 +4,7 @@ SimuQoS
 SimuQoS is a Python QoS simulator with a lot of parameters for trade and preview of peers.
 
 It's consists of two main controllers:
+
 	1. MainController thats run the simulations and store the results;
 	2. ResultadoController thats get results of simulations, group and plot graphs
 
