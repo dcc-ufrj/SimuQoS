@@ -47,7 +47,7 @@ class MainController():
             "P = tamanho da playlist de cada peer no sistema\n\n" \
             "L = tamanho da lista de arquivos de cada peer do sistema\n\n" \
             "S = tamanho (size) da lista de arquivos total do sistema (precisa ser maior que a lista dos peers e do que a playlist\n\n"\
-            "A = tipo de tamanho de cada arquivo do sistema. Atualmente só é suportado T = unitario\n\n"\
+            "A = tipo de tamanho de cada arquivo do sistema. Atualmente só é suportado A = unitario\n\n"\
             "C = tipo de cruzamento/pareamento. Atualmente só é suportado C = aleatorio\n\n"\
             "N = número de trocas de arquivos feitas a cada pareamento\n\n"\
             "T = tipo de troca. Atualmente é aceito T = sequential ou T = aleatory\n"\
