@@ -42,7 +42,7 @@ class MainController():
 
             
         else:
-            print "usage: python Main.py Q P L S A C N T R V Y X D\n\n" \
+            print "usage: python Main.py Q P L S A C N T X V Y R D\n\n" \
             "Q = quantidade de peers que o sistema possui\n\n" \
             "P = tamanho da playlist de cada peer no sistema\n\n" \
             "L = tamanho da lista de arquivos de cada peer do sistema\n\n" \

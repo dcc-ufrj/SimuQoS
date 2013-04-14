@@ -54,7 +54,14 @@ class ConsumoClass(ListaArquivoClass.ListaArquivoClass):
                     evento_novo = self.temEventoNovo();
                 if(evento_novo):
                     
-
+                    if (self.peer.consumo[tempo][evento_novo] <= 0 and self.peer.consumo[tempo][evento_novo]*-1 < tempo_delay):
+                        self.peer.consumo[tempo][evento_novo] -= 1
+                        self.peer.parado[tempo] += 1 ## adiciona tempo parado?
+                        taxa_consumo = 0;
+                        continue
+                    elif (self.peer.consumo[tempo][evento_novo] <= 0):
+                        self.peer.consumo[tempo][evento_novo] = 0
+                        tempo_delay = 0
                     try:
                         if (self.peer.consumo[tempo][evento_novo] == self.peer.troca[tempo][evento_novo]):
                             self.peer.parado[tempo] += 1;
@@ -69,7 +76,7 @@ class ConsumoClass(ListaArquivoClass.ListaArquivoClass):
                         else:
                             self.peer.consumo[tempo][evento_novo] += taxa_consumo;
                             taxa_consumo = 0;
-                    except:
+                    except: # se ele nao estiver mais em troca
                         if ((self.peer.consumo[tempo][evento_novo] + taxa_consumo) >= 100):
                             taxa_consumo = (self.peer.consumo[tempo][evento_novo] + taxa_consumo) - 100;
                             self.peer.consumo[tempo][evento_novo] = 100;
