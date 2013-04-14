@@ -56,7 +56,6 @@ class ConsumoClass(ListaArquivoClass.ListaArquivoClass):
                     
                     if (self.peer.consumo[tempo][evento_novo] <= 0 and self.peer.consumo[tempo][evento_novo]*-1 < tempo_delay):
                         self.peer.consumo[tempo][evento_novo] -= 1
-                        self.peer.parado[tempo] += 1 ## adiciona tempo parado?
                         taxa_consumo = 0;
                         continue
                     elif (self.peer.consumo[tempo][evento_novo] <= 0):
