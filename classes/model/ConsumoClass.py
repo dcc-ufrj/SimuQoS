@@ -44,6 +44,7 @@ class ConsumoClass(ListaArquivoClass.ListaArquivoClass):
         '''
         self.tempo = tempo
         self.taxa_consumo = taxa_consumo;
+        tempo_delay = tempo_delay*-1
         for peer in self.lista_peers:
             self.peer = peer;
             taxa_consumo = self.taxa_consumo;
@@ -53,8 +54,8 @@ class ConsumoClass(ListaArquivoClass.ListaArquivoClass):
                 elif(tipo_consumo == 'aleatory'):
                     evento_novo = self.temEventoNovo();
                 if(evento_novo):
-                    
-                    if (self.peer.consumo[tempo][evento_novo] <= 0 and self.peer.consumo[tempo][evento_novo]*-1 < tempo_delay):
+
+                    if (self.peer.consumo[tempo][evento_novo] <= 0 and self.peer.consumo[tempo][evento_novo] > tempo_delay):
                         self.peer.consumo[tempo][evento_novo] -= 1
                         taxa_consumo = 0;
                         continue

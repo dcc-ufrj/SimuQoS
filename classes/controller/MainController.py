@@ -36,7 +36,7 @@ class MainController():
                 troca = TrocaArquivoClass.TrocaArquivoClass(pareado);
                 troca.trocaArquivo(int(quantidade_trocada), tempo, tipo_troca,int(taxa_download));
                 consumo = ConsumoClass.ConsumoClass(lista_peer);
-                consumo.consumo(int(taxa_consumo),tempo,tipo_consumo,tempo_delay);
+                consumo.consumo(int(taxa_consumo),tempo,tipo_consumo,int(tempo_delay));
                 resultado.montaLog(tempo);
                 resultado.geraLogIncremental();
 
