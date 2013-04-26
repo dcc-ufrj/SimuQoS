@@ -13,7 +13,7 @@ If you run Main.py without parameters, the ResultadoController will be called, e
 Dependencies
 =======
 	1. scipy (Ubuntu-like: sudo apt-get install python-scipy)
-	2. pylab (Ubuntu-like: sudo apt-get install python-pylab)
+	2. matplotlib (Ubuntu-like: sudo apt-get install python-matplotlib)
 	3. numpy (Ubuntu-like: sudo apt-get install python-numpy)
 
 Usage
